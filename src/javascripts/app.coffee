@@ -11,7 +11,7 @@ $(document).on "ready", () ->
     denomination = 0
     factor = 1
 
-    while wei >= factor
+    while wei >= factor and denomination < denominations.length
       denomination += 1
       factor *= 1000
 
@@ -146,7 +146,6 @@ $(document).on "ready", () ->
       
       for transaction in transactions
         if transaction.transactionType == "JustTheSig"
-          console.log transaction
           continue
         getBlock(transaction.transactionType, transaction.blockId, transaction)
 
