@@ -3,6 +3,8 @@ $(document).on "ready", () ->
   BLOCK_REWARD = 1500000000000000000 #wei
 
   prettyAmount = (wei) ->
+    wei = new BigNumber(wei.toString())
+
     return "0 wei" if wei == 0
 
     denominations = ["wei", "Kwei", "Mwei", "Gwei", "szabo", "finney", "Ether"]
@@ -16,7 +18,7 @@ $(document).on "ready", () ->
     denomination = denominations[denomination - 1]
     factor = factor / 1000
 
-    value = (wei / factor).toFixed(2) + ""
+    value = wei.dividedBy(factor).toFixed(2) + ""
     value = value.substring(0, value.length - 3) if value.indexOf(".00") == value.length - 3
 
     return "#{value} #{denomination}"
@@ -143,6 +145,9 @@ $(document).on "ready", () ->
       transactionCount.text(transactions.length)
       
       for transaction in transactions
+        if transaction.transactionType == "JustTheSig"
+          console.log transaction
+          continue
         getBlock(transaction.transactionType, transaction.blockId, transaction)
 
   refreshButton.on "click", () ->

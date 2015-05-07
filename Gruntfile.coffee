@@ -14,10 +14,12 @@ module.exports = (grunt) ->
       build:
         files: [
           {src: "src/index.html", dest: "build/index.html"}
+          {src: "src/address-explorer.css", dest: "build/address-explorer.css"}
         ] 
       dist:
         files: [
           {src: "src/index.html", dest: "dist/index.html"}
+          {src: "src/address-explorer.css", dest: "dist/address-explorer.css"}
         ]
     coffee:
       build:
@@ -28,8 +30,10 @@ module.exports = (grunt) ->
     concat: 
       build:
         src: [
+          "src/javascripts/lib/jquery-2.1.4.js"
           "src/javascripts/lib/moment.js"
           "src/javascripts/lib/livestamp.js"
+          "src/javascripts/lib/bignumber.js" 
           "build/<%= pkg.name %>.js"
         ]
         dest: "build/<%= pkg.name %>.js"
