@@ -18,9 +18,8 @@ html,
   
 }
 
-body {
+body, .app {
   font-family: Lato, sans-serif;
-  
   height: 100%;
   width: 100%;
   color: rgba(255,255,255,0.65);
@@ -28,13 +27,8 @@ body {
   padding: 0;
 }
 
-.background {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: -1;
+.app {
+  overflow-y: scroll;
   background: linear-gradient(-45deg, gray, black);
   background-repeat: no-repeat, repeat;
   background-position: right bottom, 0 0;
@@ -43,27 +37,19 @@ body {
 
 .view {
   width: 100%;
-  
-}
-
-.view.visible {
-  display: block; 
-}
-
-.view.center {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-items: center;
-  justify-items: center;
 }
 
 #address_view {
   height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
-#address_view > div {
+#address_view > div, #address_view input {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -71,10 +57,7 @@ body {
 
 #account_view {
   margin-bottom: 10rem;
-}
-
-.view.hidden {
-  display: none;
+  overflow-y: scroll;
 }
 
 button, button:focus {
@@ -123,11 +106,11 @@ span {
   text-transform: uppercase;
 }
 
-.transaction {
+.activity {
   margin-bottom: 0.5rem;
 }
 
-.transaction > span {
+.activity > span {
   vertical-align: middle;
   display: inline-block;
   line-height: 3rem;
@@ -135,20 +118,20 @@ span {
   margin-right: 1rem;
 }
 
-.transaction .icon {
+.activity .icon {
   width: 2rem;
 }
 
-.transaction .type {
+.activity .type {
   width: 8rem;
 }
 
-.transaction .gas {
+.activity .gas {
   width: 15rem;
   text-align: right;
 }
 
-.transaction .timestamp {
+.activity .timestamp {
   float: right;
   text-align: right;
   width: 15rem;

@@ -1,7 +1,11 @@
 # Javascript files created by Coffeescript during build.
 # Order matters, as the concat task will merge them together.
 coffeefiles = [
-  "src/javascripts/app.coffee"
+  "src/javascripts/utils.cjsx"
+  "src/javascripts/address_view.cjsx"
+  "src/javascripts/account_view.cjsx"
+  "src/javascripts/activity.cjsx"
+  "src/javascripts/app.cjsx"
 ]
 
 module.exports = (grunt) ->
@@ -21,7 +25,7 @@ module.exports = (grunt) ->
           {src: "src/index.html", dest: "dist/index.html"}
           {src: "src/address-explorer.css", dest: "dist/address-explorer.css"}
         ]
-    coffee:
+    cjsx:
       build:
         options: 
           join: true
@@ -30,6 +34,7 @@ module.exports = (grunt) ->
     concat: 
       build:
         src: [
+          "src/javascripts/lib/react-0.13.3.js"
           "src/javascripts/lib/jquery-2.1.4.js"
           "src/javascripts/lib/moment.js"
           "src/javascripts/lib/livestamp.js"
@@ -54,15 +59,15 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-coffee-react'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.registerTask 'default', [
     'clean'
     'copy'
-    'coffee'
+    'cjsx'
     'concat'
-    'uglify'
   ]
+  grunt.registerTask 'dist', ["default", "uglify"]
   return

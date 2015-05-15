@@ -9,6 +9,7 @@
         "grunt-contrib-copy": "*",
         "grunt-contrib-concat": "*",
         "grunt-contrib-coffee": "*",
+        "grunt-coffee-react": "*",
         "grunt-contrib-uglify": "*",
         "grunt-contrib-watch": "*"
     },
