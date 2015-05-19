@@ -5,6 +5,7 @@ coffeefiles = [
   "src/javascripts/address_view.cjsx"
   "src/javascripts/account_view.cjsx"
   "src/javascripts/activity.cjsx"
+  "src/javascripts/block_view.cjsx"
   "src/javascripts/app.cjsx"
 ]
 

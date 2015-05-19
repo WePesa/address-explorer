@@ -5,8 +5,9 @@ Activity = React.createClass
   debit: (str) ->
     return <span className='red'>-{str}</span>
 
-  addressLink: (address) ->
+  addressLink: (address, shortened=false) ->
     url = "index.html?#{address}"
+    text = if !shortened then address else address.substring(0, 10)
     return <a className='address' href={url}>{address}</a>
 
   render: () ->
@@ -22,7 +23,10 @@ Activity = React.createClass
         transaction = @props.transaction
         value = Utils.prettyAmount(transaction.value)
 
-        if transaction.to != @props.address
+        if !@props.address?
+          icon = "\u21c4"
+          extra = <span>to{'\u00A0'}{@addressLink(transaction.to, true)}{'\u00A0'}from{'\u00A0'}{@addressLink(transaction.from, true)}</span>
+        else if transaction.to != @props.address
           icon = "\u21e4"
           type = "Debit"
           value = @debit(value)

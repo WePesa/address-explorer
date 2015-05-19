@@ -127,7 +127,7 @@ span {
 }
 
 .activity .gas {
-  width: 15rem;
+  width: 25rem;
   text-align: right;
 }
 
@@ -158,4 +158,16 @@ a.address {
 
 a.address:hover {
   text-decoration: underline;
+}
+
+.block-view {
+
+}
+
+.block-view pre {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: black;
+  box-shadow: inset 0px 0px 2px black;
 }

@@ -8,7 +8,7 @@ AddressView = React.createClass
   render: () ->
     <div id="address_view" className="view visible center">
       <div>
-        <label>Enter Ethereum Address</label>
+        <label>Enter Ethereum Address or Block Number</label>
         <input ref="address" type="text" value={@state.address} onChange={@handleChange}></input>
         <button id="view_account" onClick={@handleClick}>View Account</button>
       </div>
