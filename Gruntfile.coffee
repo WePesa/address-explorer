@@ -32,6 +32,7 @@ module.exports = (grunt) ->
       dist:
         files: [
           {src: "src/index.html", dest: "dist/index.html"}
+          {expand: true, cwd: 'src/img/', src: ['**'], dest: 'dist/img/'}
         ]
     cjsx:
       build:
