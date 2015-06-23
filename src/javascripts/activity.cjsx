@@ -5,9 +5,7 @@ Activity = React.createClass
   debit: (str) ->
     return <span>-{str}</span>
 
-  addressLink: (address, shortened=false) ->
-    console.log shortened
-
+  addressLink: (address, shortened=false) -> 
     return "" if !address?
     # Handle old-style addresses.
     if typeof address == "object" 
