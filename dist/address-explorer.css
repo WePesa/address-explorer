@@ -396,6 +396,27 @@ body, .app {
           margin-left: auto;
           width: 15rem;
           height: 4rem; }
+        .view.list .sidebar .item .string, .view.list .sidebar .item .image {
+          float: left;
+          position: relative;
+          top: 2.3rem; }
+        .view.list .sidebar .item .string {
+          border: solid 1px #fff;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+          font-size: 1rem;
+          line-height: 1.6rem;
+          padding-top: 0.1rem;
+          padding-left: 0.4rem;
+          padding-right: 0.4rem; }
+        .view.list .sidebar .item .image {
+          width: 27px;
+          height: 18px;
+          top: 2.4rem; }
+          .view.list .sidebar .item .image.transactions {
+            background: url(./img/transactions-icon@2x.png) center center no-repeat; }
+          .view.list .sidebar .item .image.mined {
+            background: url(./img/mined-blocks-icon@2x.png) center center no-repeat; }
         .view.list .sidebar .item.first {
           background: #e53b51; }
         .view.list .sidebar .item.second {

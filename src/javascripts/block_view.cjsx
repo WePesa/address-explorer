@@ -27,22 +27,26 @@ BlockView = React.createClass
       data = <pre className="ten columns offset-by-one" dangerouslySetInnerHTML={{__html: JSON.stringify(block, null, 2)}}></pre>
 
     items = []
+    gasUsed = "..."
+    denomination = "ETH"
+
+    if @state.has_requested_block?
+      gas_object = Utils.prettyAmountAsObject(block.gasUsed || 0)
+      gasUsed = gas_object.value
+      denomination = Utils.shortDenomination(gas_object.denomination)
     
     items.push 
       name: "Gas Used"
-      value: if @state.has_requested_block then block.gasUsed || 0 else "..."
-      image: ""
+      value: gasUsed
+      string: denomination
 
     items.push
       name: "Difficulty"
       value: block.difficulty || "..."
-      image: ""
 
     items.push
       name: "Date Mined"
       value: if block? then moment(block.timestamp).format("DD/MM/YY h:mm:ss A") else "..."
-      image: ""
-
 
     <div className="view list">
       <Sidebar items={items} />

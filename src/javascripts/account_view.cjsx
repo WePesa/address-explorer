@@ -77,12 +77,12 @@ AccountView = React.createClass
     items.push
       name: "Transactions"
       value: if @state.has_requested_transactions then @state.transactions.length else "..."
-      image: ""
+      image: "transactions"
 
     items.push
       name: "Blocks Mined"
       value: if @state.has_requested_blocks_mined then @state.blocks_mined.length else "..." 
-      image: ""
+      image: "mined"
 
     <div id="account_view" className="view list">
       <Sidebar items={items} buttonName="Refresh Your Account" buttonAction={@refresh}/>

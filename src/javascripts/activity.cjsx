@@ -6,6 +6,8 @@ Activity = React.createClass
     return <span>-{str}</span>
 
   addressLink: (address, shortened=false) ->
+    console.log shortened
+
     return "" if !address?
     # Handle old-style addresses.
     if typeof address == "object" 
@@ -13,7 +15,7 @@ Activity = React.createClass
 
     url = "index.html?#{address}"
     text = if !shortened then address else address.substring(0, 10)
-    return <a className='address' href={url}>{address}</a>
+    return <a className='address' href={url}>{text}</a>
 
   blockLink: (number) ->
     return <a href={"?" + number}>{@props.block.blockData.number}</a>
@@ -44,12 +46,12 @@ Activity = React.createClass
         else if transaction.to != @props.address
           type = "Debit"
           value = @debit(value)
-          extra = <span>to<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.to, true)}</span>
+          extra = <span>to<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.to)}</span>
           color = "red"
         else
           type = "Credit"
           value = @credit(value)
-          extra = <span>from<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} /><span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.from, true)}</span>
+          extra = <span>from<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} /><span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.from)}</span>
 
       when "Contract"
         color = "yellow"

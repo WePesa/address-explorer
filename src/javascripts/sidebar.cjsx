@@ -29,6 +29,14 @@ Sidebar = React.createClass
           itemIndex += 1
           return <div ref={"item" + itemIndex} className={"item " + itemClasses[itemIndex]}>
             <div className="name">{item.name}</div>
+            {
+              if item.string?
+                <div className="string">{item.string}</div>
+            }
+            {
+              if item.image? 
+                <div className={"image " + item.image}></div>
+            }
             <div className="value">{item.value}</div>
           </div>
       } 

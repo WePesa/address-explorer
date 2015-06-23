@@ -126,6 +126,37 @@ body, .app {
           height: 4rem;
         }
 
+        .string, .image {
+          float: left;
+          position: relative;
+          top: 2.3rem;
+        }
+
+        .string {
+          border: solid 1px $white;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+          font-size: 1rem;
+          line-height: 1.6rem;
+          padding-top: 0.1rem;
+          padding-left: 0.4rem;
+          padding-right: 0.4rem;
+        }
+
+        .image {
+          width: 27px;
+          height: 18px;
+          top: 2.4rem;
+
+          &.transactions {
+            background: url(./img/transactions-icon@2x.png) center center no-repeat;
+          }
+
+          &.mined {
+            background: url(./img/mined-blocks-icon@2x.png) center center no-repeat;
+          }
+        }
+
         &.first {
           background: $red;
         }
