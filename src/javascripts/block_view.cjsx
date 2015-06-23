@@ -47,7 +47,7 @@ BlockView = React.createClass
     <div className="view list">
       <Sidebar items={items} />
       <div className="main container">
-        <h4 className="ten columns offset-by-one">Block{'\u00A0'}<span>#{@props.number}</span></h4>
+        <h4 className="ten columns offset-by-one">Block<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} /><span>#{@props.number}</span></h4>
         {if activities.length == 0 then <div className="ten columns offset-by-one">No transactions found for this block.</div> else activities}
         <h4 className="ten columns offset-by-one">Data</h4>
         {data}

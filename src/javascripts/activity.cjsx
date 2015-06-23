@@ -40,16 +40,16 @@ Activity = React.createClass
         value = Utils.prettyAmount(transaction.value)
 
         if !@props.address?
-          extra = <span>to{'\u00A0'}{@addressLink(transaction.to, true)}{'\u00A0'}from{'\u00A0'}{@addressLink(transaction.from, true)}</span>
+          extra = <span>to<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.to, true)}<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />from<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.from, true)}</span>
         else if transaction.to != @props.address
           type = "Debit"
           value = @debit(value)
-          extra = <span>to{'\u00A0'}{@addressLink(transaction.to, true)}</span>
+          extra = <span>to<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.to, true)}</span>
           color = "red"
         else
           type = "Credit"
           value = @credit(value)
-          extra = <span>from{'\u00A0'}{@addressLink(transaction.from, true)}</span>
+          extra = <span>from<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} /><span dangerouslySetInnerHTML={{__html: '&nbsp;'}} />{@addressLink(transaction.from, true)}</span>
 
       when "Contract"
         color = "yellow"
