@@ -454,7 +454,7 @@ body, .app {
       vertical-align: top;
       margin-left: 3rem;
       margin-right: 3rem;
-      margin-top: 2rem; }
+      margin-top: 1.5rem; }
       #address_view .box .form label {
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.3);
@@ -468,13 +468,18 @@ body, .app {
       padding-left: 0px;
       padding-right: 0px;
       font-weight: bold;
-      width: 42rem;
+      width: 45rem;
       font-family: "Raleway", sans-serif;
       font-size: 1.8rem;
       border-radius: 0px;
       background: #162744;
       border: 0px;
       border-bottom: solid 2px rgba(255, 255, 255, 0.4); }
+    #address_view .box .examples {
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600; }
 
 button {
   padding: 0 1.5rem;
