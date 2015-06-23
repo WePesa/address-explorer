@@ -1,0 +1,608 @@
+// Add custom font
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+$font-family-base: 'Raleway', sans-serif;
+
+// Import bootstrap and fontawesome
+@import "colors";
+
+// Bootstrap Starter Template Styles
+body {
+  padding-top: 50px;
+  background-color: $yellow;
+  color: $blue-dark;
+}
+
+a {
+  font-weight: 600;
+}
+
+a:hover, a:focus {
+  color: $turquoise;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+h2 {
+  margin-bottom: 1em;
+  line-height: 1.5em;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 1.7em;
+  }
+}
+h5 {
+  font-weight: 700;
+}
+
+.red {
+  color: $red;
+}
+
+.white {
+  color: $white;
+}
+
+.number {
+  font-size: 1.2em;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+
+  .navbar-nav>li>a {
+    color: $blue-dark;
+    text-shadow: 1px 1px 0 $yellow;
+
+    &:hover, &:focus {
+      color: $turquoise;
+    }
+  }
+
+  .navbar-nav>.active>a,
+  .navbar-nav>.active>a:hover,
+  .navbar-nav>.active>a:focus {
+    color: $blue-dark;
+    background-color: transparent;
+    font-weight: 700;
+  }
+  
+
+  .navbar-toggle {
+    border-color: $blue-dark;
+
+    .icon-bar {
+      background-color: $blue-dark;
+    }
+    &:hover {
+      border-color: $blue-dark;
+      background-color: $blue-dark;
+
+      .icon-bar {
+        background-color: $white;
+      }
+    }
+    &:focus {
+      background-color: $turquoise;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+
+    #navbar.collapse.navbar-collapse, 
+    #navbar.collapsing.navbar-collapse {
+      background-color: $blue-dark;
+      color: $yellow;
+      border-color: $blue-dark;
+
+      .navbar-nav>li>a {
+        color: $yellow;
+      }
+
+      .navbar-nav>.active>a,
+      .navbar-nav>li>a:hover,
+      .navbar-nav>li>a:focus {
+        color: $red;
+      }
+      .navbar-nav>li>a:hover,
+      .navbar-nav>li>a:focus {
+        color: $turquoise;
+      }
+    }
+  }
+
+}
+
+// logo div
+.logo {
+  background-image: url(../img/logo.png);
+  @include image-2x("../img/logo@2x.png", 268px, 214px);
+  width: 268px;
+  height: 214px;
+  margin: 0 auto;
+}
+
+.spacer {
+  margin-top: 30px;
+}
+
+.button-sign-up {
+  background: transparent url(../img/button-sign-up.png) no-repeat 50% 50%;
+  @include image-2x("../img/button-sign-up@2x.png", 128px, 45px);
+  width: 128px;
+  height: 45px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+}
+
+.section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+
+  @media (max-width: $screen-sm) {
+    padding-top: 20px;
+  }
+}
+
+
+.coins {
+  margin: 0 auto;
+  height: 250px;
+
+  p {
+    margin-top: 2em;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 150%;
+    margin-left: -25%;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    height: 220px;
+
+    p {
+      margin-top: 2em;
+      font-weight: bold;
+      font-size: 1em;
+      width: 200%;
+      margin-left: -40%;
+    }
+  }
+}
+
+.circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+
+  @media (max-width: $screen-xs-max) {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.circle-feature {
+  display: inline-block;
+}
+
+
+// red div
+.red-section {
+  background-color: $red;
+  color: $blue-dark;
+
+  h2 {
+    color: $white;
+  }
+}
+
+// blue div
+.blue-section {
+  background-color: $blue-dark;
+  color: $turquoise;
+
+  h2 {
+    color: $red;
+  }
+
+  .circle { 
+    background-color: $turquoise;
+    border: 5px $white solid;
+
+    .btc {
+      background: transparent url(../img/BTC.png) no-repeat 100% 50%;
+      @include image-2x("../img/BTC@2x.png", 75px, 113px);
+      width: 75px;
+      height: 113px;
+      margin: 10px auto;
+      padding-left: 20px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/BTC@half.png) no-repeat 100% 50%;
+        @include image-2x("../img/BTC.png", 38px, 57px);
+        width: 38px;
+        height: 57px;
+        margin: 5px auto;
+      }
+    }
+
+    .eth {
+      background: transparent url(../img/ETH.png) no-repeat 50% 50%;
+      @include image-2x("../img/ETH@2x.png", 70px, 110px);
+      width: 79px;
+      height: 110px;
+      margin: 15px auto;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/ETH@half.png) no-repeat 100% 50%;
+        @include image-2x("../img/ETH.png", 38px, 57px);
+        width: 38px;
+        height: 57px;
+        margin: 5px auto;
+      }
+    }
+  }
+
+  .arrows {
+    display: inline-block;
+    vertical-align:top;
+    margin: 35px 20px;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 15px 10px;
+    }
+  }
+  .arrow-long {
+    background: transparent url(../img/arrow-long.png) no-repeat 50% 50%;
+    @include image-2x("../img/arrow-long@2x.png", 250px, 17px);
+    width: 250px;
+    height: 17px;
+    margin-bottom: 20px;
+
+    @media (max-width: $screen-xs-max) {
+      background: transparent url(../img/arrow-long@half.png) no-repeat 50% 50%;
+      @include image-2x("../img/arrow-long.png", 132px, 9px);
+      width: 132px;
+      height: 9px;
+      margin-bottom: 10px;
+    }
+  }
+  .arrow-short {
+    background: transparent url(../img/arrow-short.png) no-repeat 50% 50%;
+    @include image-2x("../img/arrow-short@2x.png", 210px, 17px);
+    width: 210px;
+    height: 17px;
+    margin-bottom: 20px;
+    margin-left: 25px;
+
+    @media (max-width: $screen-xs-max) {
+      background: transparent url(../img/arrow-long@half.png) no-repeat 50% 50%;
+      @include image-2x("../img/arrow-long.png", 105px, 9px);
+      width: 105px;
+      height: 9px;
+      margin-bottom: 10px;
+      margin-left: 13px;
+    }
+  }
+}
+
+
+// gray div
+
+.gray-section {
+  background-color: $gray-light;
+
+  .what-is-ethereum {
+
+    .what-is {
+      margin: 0 auto;
+    }
+
+    .what-is-text {
+      margin-bottom: 40px;
+      margin-left: 25px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1em;
+      margin-bottom: 10px;
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 0.7em;
+      }
+    }
+
+    .what-is-bottom-internet {
+      background: transparent url(../img/what-is-bottom-internet.png) no-repeat 50% 50%;
+      @include image-2x("../img/what-is-bottom-internet@2x.png", 805px, 120px);
+      width: 805px;
+      height: 120px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/what-is-bottom-internet@half.png) no-repeat 50% 50%;
+        @include image-2x("../img/what-is-bottom-internet.png", 322px, 48px);
+        width: 322px;
+        height: 48px;
+      }
+    }
+
+    .what-is-text.what-is-bottom-internet-text {
+      margin-left: 20px;
+
+      @media (max-width: $screen-xs-max) {
+        margin-left: 22px;
+        margin-bottom: 2px;
+      }
+    }
+
+    .what-is-bottom-arrows {
+      background: transparent url(../img/what-is-bottom-arrows.png) no-repeat 50% 50%;
+      @include image-2x("../img/what-is-bottom-arrows@2x.png", 695px, 185px);
+      width: 695px;
+      height: 189px;
+      margin-top: 10px;
+      margin-bottom: -70px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/what-is-bottom-arrows@half.png) no-repeat 50% 50%;
+        @include image-2x("../img/what-is-bottom-arrows.png", 279px, 76px);
+        width: 279px;
+        height: 76px;
+        margin-top: 5px;
+        margin-bottom: -32px;
+      }
+    }
+
+    .what-is-middle-blockchain {
+      background: transparent url(../img/what-is-middle-blockchain.png) no-repeat 50% 50%;
+      @include image-2x("../img/what-is-middle-blockchain@2x.png", 805px, 51px);
+      width: 805px;
+      height: 51px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/what-is-middle-blockchain@half.png) no-repeat 50% 50%;
+        @include image-2x("../img/what-is-middle-blockchain.png", 322px, 20px);
+        width: 322px;
+        height: 20px;
+      }
+    }
+
+    .what-is-text.what-is-middle-blockchain-text {
+      margin-bottom: 20px;
+      margin-left: 5px;
+
+      @media (max-width: $screen-xs-max) {
+        margin-bottom: 2px;
+        margin-left: 3px;
+      }
+    }
+
+    .what-is-middle-arrows {
+      background: transparent url(../img/what-is-middle-arrows.png) no-repeat 50% 50%;
+      @include image-2x("../img/what-is-middle-arrows@2x.png", 735px, 144px);
+      width: 735px;
+      height: 144px;
+      margin-bottom: -50px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/what-is-middle-arrows@half.png) no-repeat 50% 50%;
+        @include image-2x("../img/what-is-middle-arrows.png", 296px, 58px);
+        width: 296px;
+        height: 58px;
+        margin-bottom: -10px;
+      }
+    }
+
+    .what-is-top-row {
+      background: transparent url(../img/what-is-top-row.png) no-repeat 50% 50%;
+      @include image-2x("../img/what-is-top-row@2x.png", 803px, 101px);
+      width: 803px;
+      height: 101px;
+      margin-bottom: 10px;
+
+      @media (max-width: $screen-xs-max) {
+        background: transparent url(../img/what-is-top-row@half.png) no-repeat 50% 50%;
+        @include image-2x("../img/what-is-top-row.png", 318px, 40px);
+        width: 318px;
+        height: 40px;
+        margin-bottom: 5px;
+      }
+    }
+
+    .what-is-text.what-is-top-text {
+      margin-left: auto;
+
+      .top-text {
+        display: inline-block;
+
+        @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+          width: 14%;
+        }
+
+        @media (max-width: $screen-xs-max) {
+          width: 1%;
+          word-spacing: inter-word;
+        }
+      }
+      .top-first {
+        margin-left: auto;
+        margin-right: 90px;
+
+        @media (max-width: $screen-xs-max) {
+          margin-left: -30px;
+          margin-right: 90px;
+        }
+      }
+      .top-second {
+        margin-right: 95px;
+        @media (max-width: $screen-xs-max) {
+          margin-right: 75px;
+        }
+      }
+      .top-third {
+        margin-right: 105px;
+        @media (max-width: $screen-xs-max) {
+          margin-right: 95px;
+        }
+      }
+      .top-fourth {
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+// blue-second div
+
+.blue-second-section {
+  background-color: $blue-dark;
+  color: $yellow;
+
+  .circle-target {
+    background: transparent url(../img/circle-target.png) no-repeat 50% 50%;
+    @include image-2x("../img/circle-target@2x.png", 203px, 200px);
+    width: 203px;
+    height: 200px;
+  }
+
+  .circle-screens {
+    background: transparent url(../img/circle-screens.png) no-repeat 50% 50%;
+    @include image-2x("../img/circle-screens@2x.png", 200px, 201px);
+    width: 200px;
+    height: 201px;
+  }
+
+  .circle-agnostic {
+    background: transparent url(../img/circle-agnostic.png) no-repeat 50% 50%;
+    @include image-2x("../img/circle-agnostic@2x.png", 201px, 200px);
+    width: 201px;
+    height: 200px;
+  }
+
+  .circle-feature-info {
+    width: 20em;
+    text-align: center;
+    margin: 0 auto;
+    p {
+      color: $turquoise;
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-bottom: 3em;
+      line-height: 1.5em;
+
+      @media (max-width: $screen-sm) {
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+
+// try div
+.try-section {
+  p.description {
+    line-height: 1.5em;
+    font-size: 1.5em;
+    font-weight: 600;
+    width: 90%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-left: 5%;
+    }
+  }
+  .button-get-started {
+    margin-top: 20px;
+    background: transparent url(../img/button-get-started.png) no-repeat 50% 50%;
+    @include image-2x("../img/button-get-started@2x.png", 179px, 45px);
+    width: 179px;
+    height: 45px;
+
+    @media (max-width: $screen-sm-max) {
+      margin: 20px auto;
+    }
+  }
+
+  .magic-wand {
+    background: transparent url(../img/magic-wand.png) no-repeat 50% 50%;
+    @include image-2x("../img/magic-wand@2x.png", 542px, 341px);
+    width: 542px;
+    height: 341px;
+  }
+}
+
+// turqoise-section
+.turquoise-section {
+  background-color: $turquoise;
+
+  h2 {
+    color: $white;
+
+    @media (max-width: $screen-sm-max) {
+      text-align: center;
+    }
+  }
+  p.description {
+    line-height: 1.5em;
+    font-size: 1.5em;
+    font-weight: 600;
+    width: 90%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-left: 5%;
+      width: 95%;
+    }
+  }
+  .coming-soon {
+    background: transparent url(../img/coming-soon.png) no-repeat 50% 50%;
+    @include image-2x("../img/coming-soon@2x.png", 348px, 111px);
+    width: 348px;
+    height: 111px;
+    margin-top: 50px;
+
+    @media (max-width: $screen-sm-max) {
+      margin: 30px auto 0;
+    }
+  }
+}
+
+// last blue section
+.last-section {
+
+  h2 {
+    color: $blue-dark;
+  }
+
+  #email-signup {
+    width: 350px;
+    height: 34px;
+    color: $blue-dark;
+    font-weight: 600;
+    margin: 0 auto;
+    display: inline-block;
+    border-radius: 0 0 0 0;
+    border: 4px $blue-dark solid;
+
+    @include placeholder {
+        color: $red;
+    }
+
+    @media (max-width: $screen-sm-max) {
+      width: 230px;
+    }
+  }
+
+  button.button-sign-up {
+    vertical-align: middle;
+    margin-top: -1px;
+    margin-left: -10px;
+  }
+}

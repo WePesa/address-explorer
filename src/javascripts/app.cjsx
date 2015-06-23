@@ -31,4 +31,15 @@ App = React.createClass
     </div>
       
 $(document).on "ready", () ->
-  React.render(<App/>, document.body)     
+  window.Config = {
+    blockapps_host: "http://stablenet.blockapps.net" 
+  }
+  React.render(<App/>, document.body)  
+
+# Prevent livestamp from using "a few seconds ago", primarily because
+# it's a long string that doesn't fit in our layout.
+$(document).on 'change.livestamp', (event, from, to) ->
+  event.preventDefault() 
+  if to == "a few seconds ago"
+    to = "now"
+  $(event.target).html(to)  

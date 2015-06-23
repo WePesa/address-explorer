@@ -11,6 +11,7 @@
         "grunt-contrib-coffee": "*",
         "grunt-coffee-react": "*",
         "grunt-contrib-uglify": "*",
+        "grunt-sass": "*",
         "grunt-contrib-watch": "*"
     },
     "dependencies": {}

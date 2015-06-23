@@ -6,27 +6,34 @@ AccountView = React.createClass
       blocks_mined: []
       transactions: []
       transactions_blocks: {}
+      has_requested_transactions: true
+      has_requested_blocks_mined: false
     }
   componentDidMount: () ->
-    getBlock = (blockId) =>
-      $.getJSON "http://api.blockapps.net/query/block/blockid/#{blockId}", (result, textStatus, jqXHR) =>
+    getBlock = (number) =>
+      $.getJSON "#{Config.blockapps_host}/query/block?number=#{number}", (result, textStatus, jqXHR) =>
         block = result[0]
-        # I'm not supposed to mutate @state directly. But this is pretty much the same thing...
         transactions_blocks = @state.transactions_blocks
-        transactions_blocks[blockId] = block
+        transactions_blocks[number] = block
         @setState(transactions_blocks: transactions_blocks)
 
-    $.getJSON "http://api.blockapps.net/query/account/address/#{@state.address}", (statuses, textStatus, jqXHR) =>
+    $.getJSON "#{Config.blockapps_host}/query/account?address=#{@state.address}", (statuses, textStatus, jqXHR) =>
       @setState(balance: statuses[0].balance)
 
-    $.getJSON "http://api.blockapps.net/query/transaction/address/#{@state.address}", (transactions, textStatus, jqXHR) =>
-      @setState(transactions: transactions)
+    $.getJSON "#{Config.blockapps_host}/query/transaction?address=#{@state.address}", (transactions, textStatus, jqXHR) =>
+      @setState {
+        transactions: transactions
+        has_requested_transactions: true
+      }
 
       for transaction in transactions
-        getBlock(transaction.blockId)
+        getBlock(transaction.blockNumber)
 
-    $.getJSON "http://api.blockapps.net/query/block/coinbase/#{@state.address}", (blocks_mined, textStatus, jqXHR) =>
-      @setState(blocks_mined: blocks_mined)
+    $.getJSON "#{Config.blockapps_host}/query/block?coinbase=#{@state.address}", (blocks_mined, textStatus, jqXHR) =>
+      @setState {
+        blocks_mined: blocks_mined
+        has_requested_blocks_mined: true
+      }
 
   refresh: () ->
     @props.refresh(@state.address)
@@ -34,50 +41,53 @@ AccountView = React.createClass
   render: () ->
     activities = []
 
-    # I get a waring if I don't manage the keys, so here goes. 
+    # I get a warning if I don't manage the keys, so here goes. 
     key = -1
 
     for transaction in @state.transactions
       key += 1
-      continue if !@state.transactions_blocks[transaction.blockId]?
-      activities.push <Activity key={key} type={transaction.transactionType}  transaction={transaction} block={@state.transactions_blocks[transaction.blockId]} address={@state.address}/>
+      continue if !@state.transactions_blocks[transaction.blockNumber]?
+      activities.push <Activity key={key} type={transaction.transactionType}  transaction={transaction} block={@state.transactions_blocks[transaction.blockNumber]} address={@state.address}/>
 
     for block in @state.blocks_mined
       key += 1
-      activities.push <Activity key={key} type="Mined" block={block.blockData} address={@state.address}/>
+      activities.push <Activity key={key} type="Mined" block={block} address={@state.address}/>
 
     # Sort activities by timestamp
     activities = activities.sort (a,b) ->
-      a = new Date(a.props.block.timestamp).getTime()
-      b = new Date(b.props.block.timestamp).getTime()
+      a = new Date(a.props.block.blockData.timestamp).getTime()
+      b = new Date(b.props.block.blockData.timestamp).getTime()
       return b - a
 
-    <div id="account_view" className="view">
-      <div className="container">
-        <h1 className="ten columns">
-          Your Account{'\u00A0'}<span id="address_entered">({@props.address.substring(0, 15)})</span>
-        </h1>
-        <div className="two columns">
-          <button id="refresh" onClick={@refresh}>
-            Refresh
-          </button>
-        </div>
 
-        <div className="five columns">
-          <span className="icon">{'\u2130'}</span>{if @state.balance? then Utils.prettyAmount(@state.balance) else "..."}
-          <br/><span className="label">Total Balance</span>
-        </div>
-        <div className="four columns">
-          <span className="icon">{'\u21F5'}</span>{@state.transactions.length || "..."}
-          <br/><span className="label">Transactions</span>
-        </div>
-        <div className="two columns">
-          <span className="icon">{'\u229E'}</span>{@state.blocks_mined.length || "..."}
-          <br/><span className="label">Blocks Mined</span>
-        </div>
+    items = []
+    balance = "..."
+    denomination = "ETH"
 
-        <h4 className="twelve columns">Activity</h4>
+    if @state.balance?
+      balance_object = Utils.prettyAmountAsObject(@state.balance)
+      balance = balance_object.value
+      denomination = Utils.shortDenomination(balance_object.denomination)
 
+    items.push 
+      name: "Total Balance"
+      value: balance
+      string: denomination
+
+    items.push
+      name: "Transactions"
+      value: if @state.has_requested_transactions then @state.transactions.length else "..."
+      image: ""
+
+    items.push
+      name: "Blocks Mined"
+      value: if @state.has_requested_blocks_mined then @state.blocks_mined.length else "..." 
+      image: ""
+
+    <div id="account_view" className="view list">
+      <Sidebar items={items} buttonName="Refresh Your Account" buttonAction={@refresh}/>
+      <div className="main container">
+        <h4 className="ten columns offset-by-one">Activity</h4>
         {activities}
       </div>
     </div>

@@ -2,11 +2,12 @@
 # Order matters, as the concat task will merge them together.
 coffeefiles = [
   "src/javascripts/utils.cjsx"
+  "src/javascripts/sidebar.cjsx"
   "src/javascripts/address_view.cjsx"
   "src/javascripts/account_view.cjsx"
   "src/javascripts/activity.cjsx"
   "src/javascripts/block_view.cjsx"
-  "src/javascripts/app.cjsx"
+  "src/javascripts/app.cjsx" 
 ]
 
 module.exports = (grunt) ->
@@ -15,16 +16,22 @@ module.exports = (grunt) ->
     clean: 
       build: ["build/"]
       dist: ["dist/"]
+    sass: 
+      build: 
+        files: 
+          "build/address-explorer.css": "src/css/address-explorer.scss"
+      dist:
+        files:
+          "dist/address-explorer.css": "src/css/address-explorer.scss"
     copy:
       build:
         files: [
           {src: "src/index.html", dest: "build/index.html"}
-          {src: "src/address-explorer.css", dest: "build/address-explorer.css"}
+          {expand: true, cwd: 'src/img/', src: ['**'], dest: 'build/img/'}
         ] 
       dist:
         files: [
           {src: "src/index.html", dest: "dist/index.html"}
-          {src: "src/address-explorer.css", dest: "dist/address-explorer.css"}
         ]
     cjsx:
       build:
@@ -40,6 +47,8 @@ module.exports = (grunt) ->
           "src/javascripts/lib/moment.js"
           "src/javascripts/lib/livestamp.js"
           "src/javascripts/lib/bignumber.js" 
+          "src/javascripts/lib/jquery-bigtext.js"
+          "src/javascripts/lib/jquery.textFit.js"
           "build/<%= pkg.name %>.js"
         ]
         dest: "build/<%= pkg.name %>.js"
@@ -64,8 +73,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-sass'
   grunt.registerTask 'default', [
     'clean'
+    'sass'
     'copy'
     'cjsx'
     'concat'
