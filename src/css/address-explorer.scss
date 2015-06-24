@@ -74,7 +74,7 @@ body, .app {
 
       .logo {
         width: 100%;
-        height: 220px;
+        height: 180px;
         background: $yellow;
         background-image: url(./img/logo@2x.png);
         background-position: center 27px;
@@ -82,12 +82,17 @@ body, .app {
         background-size: 140px;
         text-align: center;
 
-        button {
-          margin-top: 16rem;
-        }
-
         &.without-button {
           background-position: center center;
+        }
+      }
+
+      .buttons {
+        margin-top: 2rem;
+        button {
+            margin: 0 auto 2rem;
+            width: 80%;
+            margin-left: 10%;
         }
       }
 
@@ -252,15 +257,17 @@ button {
   letter-spacing: 0.3px;
   font-family: $font-family-base;
   font-weight: 700;
+  @include border-radius(0);
 
-  &.darkblue {
-    color: $yellow;
+  &.darkturq {
+    color: $turquoise;
     background: $blue-dark;
-    border-color: $blue-dark;
+    border: 2px solid $turquoise;
 
     &:hover {
-      background: $yellow;
-      color: $blue-dark;
+      background: $white;
+      color: $red;
+      border-color: $red;
     }
   }
 
@@ -271,7 +278,7 @@ button {
 
     &:hover {
       background: $white;
-      color: $turquoise;
+      color: $red;
       border-color: $white;
     }
   }
@@ -281,6 +288,24 @@ h4 {
   margin-top: 4rem;
   font-weight: bold;
   font-size: 4rem;
+}
+
+h6 {
+  margin-top: 4rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.top {
+  h4, h6 {
+    display: inline-block;
+
+    &>span {
+      float: right;
+      clear: right;
+      margin-right: 10px;
+    }
+  }
 }
 
 span {

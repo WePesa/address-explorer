@@ -8,6 +8,7 @@ AccountView = React.createClass
       transactions_blocks: {}
       has_requested_transactions: true
       has_requested_blocks_mined: false
+      back: @showAddressView
     }
   componentDidMount: () ->
     getBlock = (number) =>
@@ -63,6 +64,7 @@ AccountView = React.createClass
     items = []
     balance = "..."
     denomination = "ETH"
+    address = @state.address
 
     if @state.balance?
       balance_object = Utils.prettyAmountAsObject(@state.balance)
@@ -85,9 +87,15 @@ AccountView = React.createClass
       image: "mined"
 
     <div id="account_view" className="view list">
-      <Sidebar items={items} buttonName="Refresh Your Account" buttonAction={@refresh}/>
+      <Sidebar items={items} buttonName="Refresh Your Account" buttonAction={@refresh} />
       <div className="main container">
-        <h4 className="ten columns offset-by-one">Activity</h4>
+        <div className="top">
+          <h4 className="four columns offset-by-one">Activity</h4>
+          <h6 className="six columns address">
+            <span className="pull-right">Address</span>
+            <span className="pull-right">{address}</span>
+          </h6>
+        </div>
         {activities}
       </div>
     </div>

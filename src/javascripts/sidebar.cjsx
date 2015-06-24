@@ -14,16 +14,7 @@ Sidebar = React.createClass
       logoClassName = "logo without-button"
 
     <div className="sidebar">
-      <div className={logoClassName}>
-        {
-          if @props.buttonAction? 
-            <button className="darkblue" onClick={@props.buttonAction}>
-              {@props.buttonName}
-            </button>
-          else
-            ""
-        }
-      </div>
+      <a href="http://blockapps.net"><div className={logoClassName}></div></a>
       {
         @props.items.map (item) ->
           itemIndex += 1
@@ -40,6 +31,24 @@ Sidebar = React.createClass
             <div className="value">{item.value}</div>
           </div>
       } 
+      <div className="buttons">
+        {
+          if @props.searchButtonName? 
+            <button className="darkturq" onClick={@props.searchButtonAction}>
+              {@props.searchButtonName}
+            </button>
+          else
+            ""
+        }
+        {
+          if @props.buttonAction? 
+            <button className="darkturq second" onClick={@props.buttonAction}>
+              {@props.buttonName}
+            </button>
+          else
+            ""
+        }
+      </div>
     </div>
 
   afterRender: () ->
