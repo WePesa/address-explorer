@@ -11,6 +11,9 @@ BlockView = React.createClass
         has_requested_block: true
       }
 
+  searchAgain: () ->
+    @props.back()
+
   render: () ->
     activities = []
 
@@ -49,7 +52,7 @@ BlockView = React.createClass
       value: if block? then moment(block.timestamp).format("DD/MM/YY h:mm:ss A") else "..."
 
     <div className="view list">
-      <Sidebar items={items} />
+      <Sidebar items={items} searchButtonName="Search Again" searchButtonAction={@searchAgain} />
       <div className="main container">
         <h4 className="ten columns offset-by-one">Block<span dangerouslySetInnerHTML={{__html: '&nbsp;'}} /><span>#{@props.number}</span></h4>
         {if activities.length == 0 then <div className="ten columns offset-by-one">No transactions found for this block.</div> else activities}

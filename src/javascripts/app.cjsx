@@ -8,6 +8,8 @@ App = React.createClass
     @setState
       address: address
       view: @getViewFromInput(address)
+  showAddressView: () ->
+    @setState(view: <AddressView onSubmit={@refresh}/>)
   getAddress: () ->
     return @state.address
   getViewFromInput: (input="") ->
@@ -16,14 +18,14 @@ App = React.createClass
     # Check to see if it's a block number. Add a length check of 20 just to keep
     # things sane.
     if input.length > 20
-      return <AccountView key={new Date().getTime()} address={input} refresh={@refresh}/>
+      return <AccountView key={new Date().getTime()} address={input} refresh={@refresh} back={@showAddressView} />
     if input == ""
-      return <AddressView onSubmit={@refresh}/>
+      return <AddressView onSubmit={@refresh} />
     else if input.match(allNumbers)?
-      return <BlockView number={input}/>
+      return <BlockView number={input} back={@showAddressView} />
     else
       # Error case. We should do something better here.
-      return <AddressView onSubmit={@refresh}/>
+      return <AddressView onSubmit={@refresh} />
 
   render: () ->
     <div className="app">

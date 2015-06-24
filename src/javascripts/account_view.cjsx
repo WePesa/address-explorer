@@ -39,6 +39,9 @@ AccountView = React.createClass
   refresh: () ->
     @props.refresh(@state.address)
 
+  searchAgain: () ->
+    @props.back()
+
   render: () ->
     activities = []
 
@@ -87,7 +90,8 @@ AccountView = React.createClass
       image: "mined"
 
     <div id="account_view" className="view list">
-      <Sidebar items={items} buttonName="Refresh Your Account" buttonAction={@refresh} />
+      <Sidebar items={items} buttonName="Refresh Account" buttonAction={@refresh}
+       searchButtonName="Search Again" searchButtonAction={@searchAgain} />
       <div className="main container">
         <div className="top">
           <h4 className="four columns offset-by-one">Activity</h4>

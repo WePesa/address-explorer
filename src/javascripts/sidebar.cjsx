@@ -33,17 +33,17 @@ Sidebar = React.createClass
       } 
       <div className="buttons">
         {
-          if @props.searchButtonName? 
-            <button className="darkturq" onClick={@props.searchButtonAction}>
-              {@props.searchButtonName}
+          if @props.buttonAction? 
+            <button className="darkturq second" onClick={@props.buttonAction}>
+              {@props.buttonName}
             </button>
           else
             ""
         }
         {
-          if @props.buttonAction? 
-            <button className="darkturq second" onClick={@props.buttonAction}>
-              {@props.buttonName}
+          if @props.searchButtonName? 
+            <button className="darkturq" onClick={@props.searchButtonAction}>
+              {@props.searchButtonName}
             </button>
           else
             ""
