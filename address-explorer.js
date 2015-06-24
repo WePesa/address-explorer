@@ -34894,13 +34894,13 @@ return jQuery;
         }, item.value));
       }), React.createElement("div", {
         "className": "buttons"
-      }, (this.props.searchButtonName != null ? React.createElement("button", {
-        "className": "darkturq",
-        "onClick": this.props.searchButtonAction
-      }, this.props.searchButtonName) : ""), (this.props.buttonAction != null ? React.createElement("button", {
+      }, (this.props.buttonAction != null ? React.createElement("button", {
         "className": "darkturq second",
         "onClick": this.props.buttonAction
-      }, this.props.buttonName) : "")));
+      }, this.props.buttonName) : ""), (this.props.searchButtonName != null ? React.createElement("button", {
+        "className": "darkturq",
+        "onClick": this.props.searchButtonAction
+      }, this.props.searchButtonName) : "")));
     },
     afterRender: function() {
       var index, item, value, _i, _results;
@@ -35031,6 +35031,9 @@ return jQuery;
     refresh: function() {
       return this.props.refresh(this.state.address);
     },
+    searchAgain: function() {
+      return this.props.back();
+    },
     render: function() {
       var activities, address, balance, balance_object, block, denomination, items, key, transaction, _i, _j, _len, _len1, _ref, _ref1;
       activities = [];
@@ -35095,8 +35098,10 @@ return jQuery;
         "className": "view list"
       }, React.createElement(Sidebar, {
         "items": items,
-        "buttonName": "Refresh Your Account",
-        "buttonAction": this.refresh
+        "buttonName": "Refresh Account",
+        "buttonAction": this.refresh,
+        "searchButtonName": "Search Again",
+        "searchButtonAction": this.searchAgain
       }), React.createElement("div", {
         "className": "main container"
       }, React.createElement("div", {
@@ -35260,6 +35265,9 @@ return jQuery;
         };
       })(this));
     },
+    searchAgain: function() {
+      return this.props.back();
+    },
     render: function() {
       var activities, block, data, denomination, gasUsed, gas_object, items, key, transaction, _i, _len, _ref;
       activities = [];
@@ -35309,7 +35317,9 @@ return jQuery;
       return React.createElement("div", {
         "className": "view list"
       }, React.createElement(Sidebar, {
-        "items": items
+        "items": items,
+        "searchButtonName": "Search Again",
+        "searchButtonAction": this.searchAgain
       }), React.createElement("div", {
         "className": "main container"
       }, React.createElement("h4", {
@@ -35345,6 +35355,13 @@ return jQuery;
         view: this.getViewFromInput(address)
       });
     },
+    showAddressView: function() {
+      return this.setState({
+        view: React.createElement(AddressView, {
+          "onSubmit": this.refresh
+        })
+      });
+    },
     getAddress: function() {
       return this.state.address;
     },
@@ -35358,7 +35375,8 @@ return jQuery;
         return React.createElement(AccountView, {
           "key": new Date().getTime(),
           "address": input,
-          "refresh": this.refresh
+          "refresh": this.refresh,
+          "back": this.showAddressView
         });
       }
       if (input === "") {
@@ -35367,7 +35385,8 @@ return jQuery;
         });
       } else if (input.match(allNumbers) != null) {
         return React.createElement(BlockView, {
-          "number": input
+          "number": input,
+          "back": this.showAddressView
         });
       } else {
         return React.createElement(AddressView, {
