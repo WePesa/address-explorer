@@ -34874,12 +34874,11 @@ return jQuery;
       }
       return React.createElement("div", {
         "className": "sidebar"
+      }, React.createElement("a", {
+        "href": "http://blockapps.net"
       }, React.createElement("div", {
         "className": logoClassName
-      }, (this.props.buttonAction != null ? React.createElement("button", {
-        "className": "darkblue",
-        "onClick": this.props.buttonAction
-      }, this.props.buttonName) : "")), this.props.items.map(function(item) {
+      })), this.props.items.map(function(item) {
         itemIndex += 1;
         return React.createElement("div", {
           "ref": "item" + itemIndex,
@@ -34893,7 +34892,15 @@ return jQuery;
         }) : void 0), React.createElement("div", {
           "className": "value"
         }, item.value));
-      }));
+      }), React.createElement("div", {
+        "className": "buttons"
+      }, (this.props.searchButtonName != null ? React.createElement("button", {
+        "className": "darkturq",
+        "onClick": this.props.searchButtonAction
+      }, this.props.searchButtonName) : ""), (this.props.buttonAction != null ? React.createElement("button", {
+        "className": "darkturq second",
+        "onClick": this.props.buttonAction
+      }, this.props.buttonName) : "")));
     },
     afterRender: function() {
       var index, item, value, _i, _results;
@@ -34971,7 +34978,8 @@ return jQuery;
         transactions: [],
         transactions_blocks: {},
         has_requested_transactions: true,
-        has_requested_blocks_mined: false
+        has_requested_blocks_mined: false,
+        back: this.showAddressView
       };
     },
     componentDidMount: function() {
@@ -35024,7 +35032,7 @@ return jQuery;
       return this.props.refresh(this.state.address);
     },
     render: function() {
-      var activities, balance, balance_object, block, denomination, items, key, transaction, _i, _j, _len, _len1, _ref, _ref1;
+      var activities, address, balance, balance_object, block, denomination, items, key, transaction, _i, _j, _len, _len1, _ref, _ref1;
       activities = [];
       key = -1;
       _ref = this.state.transactions;
@@ -35061,6 +35069,7 @@ return jQuery;
       items = [];
       balance = "...";
       denomination = "ETH";
+      address = this.state.address;
       if (this.state.balance != null) {
         balance_object = Utils.prettyAmountAsObject(this.state.balance);
         balance = balance_object.value;
@@ -35090,9 +35099,17 @@ return jQuery;
         "buttonAction": this.refresh
       }), React.createElement("div", {
         "className": "main container"
+      }, React.createElement("div", {
+        "className": "top"
       }, React.createElement("h4", {
-        "className": "ten columns offset-by-one"
-      }, "Activity"), activities));
+        "className": "four columns offset-by-one"
+      }, "Activity"), React.createElement("h6", {
+        "className": "six columns address"
+      }, React.createElement("span", {
+        "className": "pull-right"
+      }, "Address"), React.createElement("span", {
+        "className": "pull-right"
+      }, address))), activities));
     }
   });
 

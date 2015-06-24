@@ -371,17 +371,21 @@ body, .app {
       background: #223765; }
       .view.list .sidebar .logo {
         width: 100%;
-        height: 220px;
+        height: 180px;
         background: #ffd600;
         background-image: url(./img/logo@2x.png);
         background-position: center 27px;
         background-repeat: no-repeat;
         background-size: 140px;
         text-align: center; }
-        .view.list .sidebar .logo button {
-          margin-top: 16rem; }
         .view.list .sidebar .logo.without-button {
           background-position: center center; }
+      .view.list .sidebar .buttons {
+        margin-top: 2rem; }
+        .view.list .sidebar .buttons button {
+          margin: 0 auto 2rem;
+          width: 80%;
+          margin-left: 10%; }
       .view.list .sidebar .item {
         font-weight: 700;
         padding: 3rem; }
@@ -485,27 +489,44 @@ button {
   padding: 0 1.5rem;
   letter-spacing: 0.3px;
   font-family: "Raleway", sans-serif;
-  font-weight: 700; }
-  button.darkblue {
-    color: #ffd600;
+  font-weight: 700;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0; }
+  button.darkturq {
+    color: #3cb5b5;
     background: #223765;
-    border-color: #223765; }
-    button.darkblue:hover {
-      background: #ffd600;
-      color: #223765; }
+    border: 2px solid #3cb5b5; }
+    button.darkturq:hover {
+      background: #fff;
+      color: #e53b51;
+      border-color: #e53b51; }
   button.turquoise {
     color: #fff;
     background: #3cb5b5;
     border-color: #3cb5b5; }
     button.turquoise:hover {
       background: #fff;
-      color: #3cb5b5;
+      color: #e53b51;
       border-color: #fff; }
 
 h4 {
   margin-top: 4rem;
   font-weight: bold;
   font-size: 4rem; }
+
+h6 {
+  margin-top: 4rem;
+  font-weight: bold;
+  font-size: 1.5rem; }
+
+.top h4, .top h6 {
+  display: inline-block; }
+  .top h4 > span, .top h6 > span {
+    float: right;
+    clear: right;
+    margin-right: 10px; }
 
 span {
   display: inline-block; }
