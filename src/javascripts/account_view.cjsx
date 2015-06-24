@@ -45,12 +45,12 @@ AccountView = React.createClass
   render: () ->
     activities = []
 
-    # I get a warning if I don't manage the keys, so here goes. 
     key = -1
 
+    # I get a warning if I don't manage the keys, so here goes. 
     for transaction in @state.transactions
-      key += 1
       continue if !@state.transactions_blocks[transaction.blockNumber]?
+      key += 1
       activities.push <Activity key={key} type={transaction.transactionType}  transaction={transaction} block={@state.transactions_blocks[transaction.blockNumber]} address={@state.address}/>
 
     for block in @state.blocks_mined

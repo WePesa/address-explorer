@@ -70,13 +70,15 @@ Activity = React.createClass
     </div> 
 
   afterRender: () ->
-    gas = React.findDOMNode(@refs.gas)
-    gas = $(gas)
-    gas.textFit {
-      widthOnly: true
-      reProcess: true
-      maxFontSize: 15
-    }
+    setTimeout () =>
+      gas = React.findDOMNode(@refs.gas)
+      gas = $(gas)
+      gas.textFit {
+        widthOnly: true
+        reProcess: true
+        maxFontSize: 15
+      }
+    , 50
 
   componentDidMount: () ->
     @afterRender()
